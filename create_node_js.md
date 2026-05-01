@@ -1,6 +1,6 @@
 # Create basic Node.js project
 ## Create node.js folder 
-mkdir node_app
+mkdir node_app  
 cd node_app
 
 ## Create node.js config file and docker file
@@ -48,8 +48,8 @@ COPY . .
 CMD ["npm", "start"]
 ```
 ## Build and Run Node.js
-docker build -t node_app .
-docker run -p 3000:3000 node_app
+docker build -t node_app .  
+docker run -p 3000:3000 node_app  
 In Browser, run http://localhost:3000
 
 

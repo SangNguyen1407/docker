@@ -1,18 +1,18 @@
 # Docker Introduction
 ## what is difference Docker and WSL?
-Docker is platform for running containers.
-・Docker uses images to create containers
-・Docker Engine manges and runs many containers
-・Using services like MySQL, Redis, Nginx
-・Using work with microservices
-WSL(Windows SubSystem for Linux): run a real Linux distribution inside Windows
-・can install Ubuntu, Debian, Kali, etc
-・VM no required
-・can run Linux commnands, tools, and development environments
-(In summary, WSL is not Docker, Docker using WSL to run container)
-・Using to run a full Linux envrionment for develop software in Linux
-(means build source code in Linux)
-・Want to Linux tool (Python, Node, bash, apt, etc)
+Docker is platform for running containers.  
+・Docker uses images to create containers  
+・Docker Engine manges and runs many containers  
+・Using services like MySQL, Redis, Nginx  
+・Using work with microservices  
+WSL(Windows SubSystem for Linux): run a real Linux distribution inside Windows  
+・can install Ubuntu, Debian, Kali, etc  
+・VM no required  
+・can run Linux commnands, tools, and development environments  
+(In summary, WSL is not Docker, Docker using WSL to run container)  
+・Using to run a full Linux envrionment for develop software in Linux  
+(means build source code in Linux)  
+・Want to Linux tool (Python, Node, bash, apt, etc)  
 ## Docker basic Commands
 ```
 docker version
