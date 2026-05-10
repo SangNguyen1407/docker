@@ -41,7 +41,7 @@ passwd
 exit
 ```
 ## Detail commands info
-# 1. Show docker version 
+### 1. Show docker version 
 ```
 docker version
 Client:
@@ -64,7 +64,7 @@ Client:
 The important fields, needs to check, are Client version, 
 Server(Engine) (run docker info command), API version, 
 
-# 2. Show all container
+### 2. Show all container
 ```
 docker ps -a
 CONTAINER ID   IMAGE         COMMAND        CREATED        STATUS                     PORTS     NAMES
@@ -104,7 +104,7 @@ Filter container status:
 ④docker ps -a --filter "status=restarting"
 
 
-# 3. Start/Stop and Remove
+### 3. Start/Stop and Remove
 ```
 docker container stop/start <container_id>
 docker container rm  <container_id>
@@ -117,7 +117,7 @@ docker container rm  <container_id>
 * If it doesn’t stop in time, Docker sends SIGKILL
 
 
-# 4. Shows all network 
+### 4. Shows all network 
 
 ```
 $ docker network ls
@@ -139,7 +139,7 @@ aeef3df47d0e   none               null      local
 
 $ docker run --net=mynet
 ```
-# 5. docker network inspect bridge
+### 5. docker network inspect bridge
 ```
 [
     {

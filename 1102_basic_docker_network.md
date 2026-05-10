@@ -1,5 +1,5 @@
 # Docker Network introduction
-# 1. Shows all network 
+## 1. Shows all network 
 
 ```
 $ docker network ls
@@ -21,7 +21,7 @@ aeef3df47d0e   none               null      local
 
 $ docker run --net=mynet
 ```
-# 2. docker network inspect bridge
+## 2. docker network inspect bridge
 ```
 [
     {
