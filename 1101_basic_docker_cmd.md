@@ -139,7 +139,8 @@ aeef3df47d0e   none               null      local
 
 $ docker run --net=mynet
 ```
-### 5. docker network inspect bridge
+### 5. Inspect the bridge network to see connected containers:
+$ docker network inspect bridge
 ```
 [
     {
@@ -189,4 +190,27 @@ $ docker run --net=mynet
         }
     }
 ]
+```
+### 6. Disconnect a container from a user-defined bridge
+To disconnect a running container from a user-defined bridge, use the docker network disconnect command.
+```
+$ docker network ls
+NETWORK ID     NAME               DRIVER    SCOPE
+d41baab1c6b9   bridge             bridge    local
+c3c2ba7161db   host               host      local
+9a2f9efd2d88   mynet              bridge    local
+aeef3df47d0e   none               null      local
+
+$ docker run -d --name my-nginx nginx
+
+$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                   CREATED          STATUS          PORTS     NAMES
+71ae62d8d90b   nginx     "/docker-entrypoint.…"   6 seconds ago    Up 6 seconds    80/tcp    my-nginx
+8a79c4a4a74b   alpine    "sleep 5000"              33 minutes ago   Up 33 minutes             sleeping-alpine
+
+$ docker create --name my-nginx --network mynet --publish 8080:80 nginx:latest
+(if my-nginx container existed, remove container: docker rm my-nginx)
+$ docker start my-nginx
+$ docker network disconnect mynet my-nginx
+
 ```
