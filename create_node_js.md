@@ -52,4 +52,25 @@ docker build -t node_app .
 docker run -p 3000:3000 node_app  
 In Browser, run http://localhost:3000
 
+# Create Nodejs
+1. install node.js 
+2. Run the follow cmd
+```
+npm init --yes
+npm install express
+npm install ejs
+```
+3. Update file
+・server.js (package.json, main show )
+```
+const express = require('express');
+const app = express();
 
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+});
+
+app.listen(3000);
+```
+・Create view/index.ejs file and update file content
+<h1>Hello World</h1>
