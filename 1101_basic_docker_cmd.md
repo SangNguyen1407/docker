@@ -282,3 +282,10 @@ $ docker start my-nginx
 $ docker network disconnect mynet my-nginx
 
 ```
+
+### 7. Excute command insides container
+
+Syntax
+・ docker exec <container_id><command>
+
+
