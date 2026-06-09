@@ -40,7 +40,7 @@ Exception: (short command)
 docker pull
 docker push
 
-② With componet container
+② With component container
 ・Create a new container from image and start it
 docker container run <image>
 ・List container is running (even container is shutdown)

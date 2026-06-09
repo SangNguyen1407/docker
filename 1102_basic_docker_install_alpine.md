@@ -1,5 +1,3 @@
-# Install alpine
-
 ## What is Alpine?
 
 Alpine is lightweight security-focused Linux distribution.
@@ -79,16 +77,13 @@ PS D:\Docker\Docker>
 ```
 
 ## Create a Dockerfile Using Alpine
-```
 # Use Alpine as the base image
 
 1. Create Dockerfile file and add ther following line:
 ```
 FROM alpine:latest
-
 # Install a package (e.g., curl)
 RUN apk add --no-cache curl
-
 # Set default command
 CMD ["sh"]
 ```
