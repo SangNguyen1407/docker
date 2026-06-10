@@ -30,5 +30,5 @@ Open web browser and run localhost
 2. Log trace
 Show log in container
 ```
-PS D:\Docker> docker logs -f 1a8ee90f4126
+PS D:\Docker> docker logs -f <container_id>
 ```
