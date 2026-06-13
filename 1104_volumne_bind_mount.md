@@ -1,12 +1,18 @@
-## Volumns bind_mount
+# Volumne (bind_mount)
+
+## What is volumne?
+A Docker volumne indicates the partition of memory that Docker used to persist data inside container. When the container stops, retarts this data does not disappear
+
+## Why use bind mount?
 
    | postgres | ------------>  |pgdata|
 
 ```
+syntax
 docker volume create <volume_name>
 docker run -v <local_dir/volume>:<container_dir>
-
-for example:
+```
+```
 docker volume create pgdata
 
 docker run -v pgdata:<path> -p 5432:5432 postgres
