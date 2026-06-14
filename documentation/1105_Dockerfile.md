@@ -51,9 +51,9 @@ Set default command when a container starts.
 
 ## How to run Dockerfile
 ```
-docker build -t <image_name>:<tag> .
+docker build -t <image_name>:<tag> <Dockerfile_path>
 ```
-The last command context is [.], it refers to the folder that contains Dockerfile.
+<Dockerfile_path> refers to the folder that contains Dockerfile.
 
 All Dockerfile insides this folder is called for building to Docker image.
 ```

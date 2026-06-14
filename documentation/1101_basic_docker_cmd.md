@@ -185,6 +185,25 @@ docker container rm  <container_id>
 * If it doesn’t stop in time, Docker sends SIGKILL
 
 
+### 4. Excute command insides container
+
+Syntax
+
+・ docker exec <container_id><command>
+
+for example:
+
+・ docker exec <container_id> echo Hello World
+
+・ docker exec <container_id> echo $PATH
+
+・ docker exec <container_id> sh -c "echo $PATH"
+
+・ docker exec <container_id> cat /etc/os-release 
+
+・　*** docker exec -it <container_id> sh
+
+
 ### 4. Shows all network 
 
 ```
@@ -286,6 +305,17 @@ $ docker network disconnect mynet my-nginx
 ### 7. Excute command insides container
 
 Syntax
+
 ・ docker exec <container_id><command>
 
+for example:
 
+・ docker exec <container_id> echo Hello World
+
+・ docker exec <container_id> echo $PATH
+
+・ docker exec <container_id> sh -c "echo $PATH"
+
+・ docker exec <container_id> cat /etc/os-release 
+
+・　*** docker exec -it <container_id> sh
