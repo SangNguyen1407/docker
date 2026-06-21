@@ -1,39 +1,39 @@
 # Docker Introduction
 ## what is difference Docker and WSL?
 Docker is platform for running containers.  
-・Docker uses images to create containers  
-・Docker Engine manges and runs many containers  
-・Using services like MySQL, Redis, Nginx  
-・Using work with microservices  
+- Docker uses images to create containers  
+- Docker Engine manges and runs many containers  
+- Using services like MySQL, Redis, Nginx  
+- Using work with microservices  
 WSL(Windows SubSystem for Linux): run a real Linux distribution inside Windows  
-・can install Ubuntu, Debian, Kali, etc  
-・VM no required  
-・can run Linux commnands, tools, and development environments  
+- can install Ubuntu, Debian, Kali, etc  
+- VM no required  
+- can run Linux commnands, tools, and development environments  
 (In summary, WSL is not Docker, Docker using WSL to run container)  
-・Using to run a full Linux envrionment for develop software in Linux  
+- Using to run a full Linux envrionment for develop software in Linux  
 (means build source code in Linux)  
-・Want to Linux tool (Python, Node, bash, apt, etc)  
+- Want to Linux tool (Python, Node, bash, apt, etc)  
 ## Docker basic Commands
 
 syntax
 
 docker <component> <command>
 
-・component: image, container, network, volume
+- `component:` image, container, network, volume
 
-・command: ls, run, exec, stop, pull, push
+- `command:` ls, run, exec, stop, pull, push
 
 ```
 ① With component image
-・Download the image from a registry to local machine
+- Download the image from a registry to local machine
 docker image pull <image>
 docker image pull <image>:<tag>
-・Download the image from local machine to a registry
+- Download the image from local machine to a registry
 docker image push <image>
 docker image push <image>:<tag>
-・List all images
+- List all images
 docker images OR docker image ls
-・Other common command:
+- Other common command:
 docker image prune (Delete unused images from local system)
 
 Exception: (short command)
@@ -41,14 +41,14 @@ docker pull
 docker push
 
 ② With component container
-・Create a new container from image and start it
+- Create a new container from image and start it
 docker container run <image>
-・List container is running (even container is shutdown)
+- List container is running (even container is shutdown)
 docker container ls OR docker container ls -a
 docker ps OR docker ps -a
-・Delete unused container
+- Delete unused container
 docker container prune
-・Run a command inside an already running container.
+- Run a command inside an already running container.
 docker container exec <container_id> <command>
 
 Exception: (short command)
@@ -116,19 +116,12 @@ docker run ----> (UP) --docker stop/kill--> (EXITED) -----docker rm----->  (DEAD
                   |<-----docker start--------|
 ```
 Run "docker run" command to excute a main process. When the main process ends run "docker stop <container_id>"and "docker rm" to delete the container completely.
-
 The main process has PID=1, the container will remain alive when the PID=1 process is alive.
-
 When using "docker stop" command, Docker will send SIGTERM (termination signal) to stop container of PID=1 process and container status is EXITED(0).
-
 After recevice SIGTERM within 10s, if container does not exit, Docker will send SIGKILL (kill signal), the container will stop and status is EXITED(137).
-
 The container has 2 mode: Attach(eg: attach linux termial into container), and Detach
-
 Attach: Ctrl + D (exit container and container status is Exited(0))
-
 Dettach: Ctrl + P + D(When attach the container again, using "docker attach <container_id>")
-
 (when run with detach container, using "docker run -d <container>")
 
 ```
@@ -138,70 +131,45 @@ a1b2c3d4e5f6   nginx         "/docker..."   2 hours ago    Exited (0) 1 hour ago
 b7c8d9e0f1a2   hello-world   "/hello"       3 hours ago    Exited (0) 3 hours ago               hopeful_morse
 ```
 show all container(running or stopped) on the system.
-
 In STATUS fields, this info shows container status of containers.
-
 for example, 
-
 ①　Created                       → container is not started yet
-
 ①　Up 5 minutes                  → container is running
-
 ②　Exited (0) 2 hours ago        → container is stopped
-
 ③　Restarting (1) 5 seconds ago　→ container is restarted
 
 Exit code matter:
-
-・Exited (0)   → normal exit
-
-・Exited (1)   → error
-
-・Exited (137) → killed (forced stop)
-
-・Exited (130) → killed (user stop this container)
+- `Exited (0)`  normal exit
+- `Exited (1)`  error
+- `Exited (137)` killed (forced stop)
+- `Exited (130)` killed (user stop this container)
 
 Filter container status:
-
 ①docker ps -a --filter "status=created"
-
 ②docker ps --filter "status=running"
-
 ③docker ps -a --filter "status=exited"
-
 ④docker ps -a --filter "status=restarting"
-
 
 ### 3. Start/Stop and Remove
 ```
 docker container stop/start <container_id>
 docker container rm  <container_id>
-
 ```
-* Sends a SIGTERM signal to the container
-
-* Gives the main process time to shut down cleanly
-
-* If it doesn’t stop in time, Docker sends SIGKILL
+- Sends a SIGTERM signal to the container
+- Gives the main process time to shut down cleanly
+- If it doesn’t stop in time, Docker sends SIGKILL
 
 
 ### 4. Excute command insides container
-
 Syntax
-
-・ docker exec <container_id><command>
+-  docker exec <container_id><command>
 
 for example:
-
-・ docker exec <container_id> echo Hello World
-
-・ docker exec <container_id> echo $PATH
-
-・ docker exec <container_id> sh -c "echo $PATH"
-
-・ docker exec <container_id> cat /etc/os-release 
-
-・　*** docker exec -it <container_id> sh
+-  docker exec <container_id> echo Hello World
+-  docker exec <container_id> echo $PATH
+-  docker exec <container_id> sh -c "echo $PATH"
+-  docker exec <container_id> cat /etc/os-release 
+- 　*** docker exec -it <container_id> sh
 
 
 ### 4. Shows all network 
@@ -299,23 +267,15 @@ $ docker create --name my-nginx --network mynet --publish 8080:80 nginx:latest
 (if my-nginx container existed, remove container: docker rm my-nginx)
 $ docker start my-nginx
 $ docker network disconnect mynet my-nginx
-
 ```
 
 ### 7. Excute command insides container
-
 Syntax
-
-・ docker exec <container_id><command>
+-  docker exec <container_id><command>
 
 for example:
-
-・ docker exec <container_id> echo Hello World
-
-・ docker exec <container_id> echo $PATH
-
-・ docker exec <container_id> sh -c "echo $PATH"
-
-・ docker exec <container_id> cat /etc/os-release 
-
-・　*** docker exec -it <container_id> sh
+- docker exec <container_id> echo Hello World
+- docker exec <container_id> echo $PATH
+- docker exec <container_id> sh -c "echo $PATH"
+- docker exec <container_id> cat /etc/os-release 
+- 　*** docker exec -it <container_id> sh
