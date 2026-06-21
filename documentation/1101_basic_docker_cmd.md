@@ -12,8 +12,8 @@ Docker is platform for running containers.
 - Want to Linux tool (Python, Node, bash, apt, etc) 
  
 ## Docker basic Commands
-###Syntax
-docker <component> <command>
+Syntax
+- docker <component> <command>
 - `component:` image, container, network, volume
 - `command:` ls, run, exec, stop, pull, push
 ```
@@ -124,13 +124,12 @@ CONTAINER ID   IMAGE         COMMAND        CREATED        STATUS               
 a1b2c3d4e5f6   nginx         "/docker..."   2 hours ago    Exited (0) 1 hour ago                webserver
 b7c8d9e0f1a2   hello-world   "/hello"       3 hours ago    Exited (0) 3 hours ago               hopeful_morse
 ```
-show all container(running or stopped) on the system.
-In STATUS fields, this info shows container status of containers.
-for example, 
-①　Created                       → container is not started yet
-①　Up 5 minutes                  → container is running
-②　Exited (0) 2 hours ago        → container is stopped
-③　Restarting (1) 5 seconds ago　→ container is restarted
+-show all container(running or stopped) on the system.
+-In STATUS fields, this info shows container status of containers.
+- `①　Created                     ` container is not started yet
+- `①　Up 5 minutes                ` container is running
+- `②　Exited (0) 2 hours ago      ` container is stopped
+- `③　Restarting (1) 5 seconds ago` container is restarted
 
 Exit code matter:
 - `Exited (0)`  normal exit
@@ -139,10 +138,10 @@ Exit code matter:
 - `Exited (130)` killed (user stop this container)
 
 Filter container status:
-①docker ps -a --filter "status=created"
-②docker ps --filter "status=running"
-③docker ps -a --filter "status=exited"
-④docker ps -a --filter "status=restarting"
+- ①docker ps -a --filter "status=created"
+- ②docker ps --filter "status=running"
+- ③docker ps -a --filter "status=exited"
+- ④docker ps -a --filter "status=restarting"
 
 ### 3. Start/Stop and Remove
 ```
@@ -155,8 +154,8 @@ docker container rm  <container_id>
 
 
 ### 4. Excute command insides container
-Syntax
--  docker exec <container_id><command>
+Syntax: 
+- docker exec <container_id><command>
 
 for example:
 -  docker exec <container_id> echo Hello World
@@ -272,4 +271,4 @@ for example:
 - docker exec <container_id> echo $PATH
 - docker exec <container_id> sh -c "echo $PATH"
 - docker exec <container_id> cat /etc/os-release 
-- 　*** docker exec -it <container_id> sh
+(*** docker exec -it <container_id> sh)
