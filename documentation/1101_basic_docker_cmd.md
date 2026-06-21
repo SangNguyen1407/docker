@@ -4,25 +4,18 @@ Docker is platform for running containers.
 - Docker uses images to create containers  
 - Docker Engine manges and runs many containers  
 - Using services like MySQL, Redis, Nginx  
-- Using work with microservices  
-WSL(Windows SubSystem for Linux): run a real Linux distribution inside Windows  
-- can install Ubuntu, Debian, Kali, etc  
+- Using work with microservices WSL(Windows SubSystem for Linux): run a real Linux distribution inside Windows  
+- can install Ubuntu, Debian, Kali, etc
 - VM no required  
-- can run Linux commnands, tools, and development environments  
-(In summary, WSL is not Docker, Docker using WSL to run container)  
-- Using to run a full Linux envrionment for develop software in Linux  
-(means build source code in Linux)  
-- Want to Linux tool (Python, Node, bash, apt, etc)  
+- Can run Linux commnands, tools, and development environments (In summary, WSL is not Docker, Docker using WSL to run container)  
+- Using to run a full Linux envrionment for develop software in Linux (means build source code in Linux)  
+- Want to Linux tool (Python, Node, bash, apt, etc) 
+ 
 ## Docker basic Commands
-
-syntax
-
+###Syntax
 docker <component> <command>
-
 - `component:` image, container, network, volume
-
 - `command:` ls, run, exec, stop, pull, push
-
 ```
 ① With component image
 - Download the image from a registry to local machine
@@ -115,13 +108,14 @@ docker run ----> (UP) --docker stop/kill--> (EXITED) -----docker rm----->  (DEAD
                   |                          |
                   |<-----docker start--------|
 ```
-Run "docker run" command to excute a main process. When the main process ends run "docker stop <container_id>"and "docker rm" to delete the container completely.
-The main process has PID=1, the container will remain alive when the PID=1 process is alive.
-When using "docker stop" command, Docker will send SIGTERM (termination signal) to stop container of PID=1 process and container status is EXITED(0).
-After recevice SIGTERM within 10s, if container does not exit, Docker will send SIGKILL (kill signal), the container will stop and status is EXITED(137).
+- Run "docker run" command to excute a main process. When the main process ends run "docker stop <container_id>"and "docker rm" to delete the container completely.
+- The main process has PID=1, the container will remain alive when the PID=1 process is alive.
+- When using "docker stop" command, Docker will send SIGTERM (termination signal) to stop container of PID=1 process and container status is EXITED(0).
+- After recevice SIGTERM within 10s, if container does not exit, Docker will send SIGKILL (kill signal), the container will stop and status is EXITED(137).
+
 The container has 2 mode: Attach(eg: attach linux termial into container), and Detach
-Attach: Ctrl + D (exit container and container status is Exited(0))
-Dettach: Ctrl + P + D(When attach the container again, using "docker attach <container_id>")
+- `Attach:` Ctrl + D (exit container and container status is Exited(0))
+- `Dettach:` Ctrl + P + D(When attach the container again, using "docker attach <container_id>")
 (when run with detach container, using "docker run -d <container>")
 
 ```
