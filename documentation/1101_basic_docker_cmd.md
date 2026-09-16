@@ -1,5 +1,37 @@
 # Docker Introduction
-## what is difference Docker and WSL?
+## what is Docker?
+## Docker architecture
+Docker uses a client server architecture.
+The Docker client sends requests to the Docker Daemon.
+The Docker Daemon handles container lifecycle tasks.
+Communication happens over a REST API using sockets or networks.
+![](pic/DockerArchitecture.png)
+
+## Docker Core Architectural Models
+- Docker Client: the client sends this command to the daemon via a REST API
+- Docker Host: provides the environment running the daemon, containers, and images.
+- Docker Registry: a remote repository for storing and distributing docker images
+
+## Detail Docker Core Architectural Models
+- Docker Client:
+Using Common Commands:
+    - docker build: Builds an image from a Dockerfile
+    - docker pull: Pulls an image from a registry.
+    - docker run: Creates and starts a container from an image.
+- Docker Host:
+The Docker Host is the physical or virtual machine that provides the complete environment for executing and running containers. 
+It comprises:
+    - The Operating System (and its kernel).
+    - The Docker Daemon.
+    - Images that have been pulled or built.
+    - Running Containers.
+    - Networks and Storage components.
+- Docker Registry:
+Image Lifecycle Commands:
+    - docker pull <image_name>: Downloads an image from a configured registry to your local Docker Host.
+    - docker push <image_name>: Uploads a local image to a registry.
+
+## What is difference Docker and WSL?
 Docker is platform for running containers.  
 - Docker uses images to create containers  
 - Docker Engine manges and runs many containers  
