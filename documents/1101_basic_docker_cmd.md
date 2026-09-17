@@ -31,7 +31,7 @@ A centralized repository for managing the image lifecycle via specific commands:
     - `docker push <image_name>` Uploads a local image to a registry.
 
 ## Docker Objects
--1. Docker Images
+- 1. Docker Images
 Images are built from a Dockerfile, a simple text file defining the steps to assemble the image.
 There are 2 printciples of images:
     - 1. Images are a immutable(read-only), not modify or make changes to it. 
@@ -41,10 +41,10 @@ There are 2 printciples of images:
 When creating Dockerfile with layers, and running `docker build` prompts in Docker Client to send this Dockerfile to Docker Daemon via REST API.
 Docker Daemon processes the Dockerfile, download the node:18-alpine base image from Docker Registry, executes the defined steps and save final result onto Docker Host.
 
--2. Containers
+- 2. Containers
 A container is a runnable,live instance of an image
 
--3. Storage
+- 3. Storage
 
 ## What is difference Docker and Virtual Machine?
 
