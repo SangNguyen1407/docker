@@ -36,20 +36,7 @@ Images are built from a Dockerfile, a simple text file defining the steps to ass
 There are 2 printciples of images:
     - 1. Images are a immutable(read-only), not modify or make changes to it. 
     - 2. Images are composed of layers. Each layer represents a set of file system, that add remove or modify files.
-
-┌────────────────────────┐    ─
-│　　　　　　　　　　　　　　　　　　　                ↑
-│  Layer3 (CMD ["node", "server.js"])                  │
-├────────────────────────┤    │
-│　　　　　　　　　　　　　　　　　　　                │
-│  Layer2 (RUN npm install)                            │ 
-├────────────────────────┤    Read-Only (Image layer)
-│　　　　　　　　　　　　　　　　　　　                │
-│  Layer1 (COPY . /app)                                │
-├────────────────────────┤    │
-│                                                      │
-│  Basic layer (FROM node:18-alpine)                   ↓
-└────────────────────────┘    ─
+![](pic/ImageLayer.png)
 
 When creating Dockerfile with layers, and running `docker build` prompts in Docker Client to send this Dockerfile to Docker Daemon via REST API.
 Docker Daemon processes the Dockerfile, download the node:18-alpine base image from Docker Registry, executes the defined steps and save final result onto Docker Host.
@@ -57,13 +44,6 @@ Docker Daemon processes the Dockerfile, download the node:18-alpine base image f
 -2. Containers
 A container is a runnable,live instance of an image
 
-┌────────────────────────┐
-│　(上層)　　　　　　　　　　　　　　　　　　
-│  Container Layer (Writable書き込み可能)
-├────────────────────────┤
-│  (下層)                                    
-│  Image Layers (Read-Only読み取り専用) 
-└────────────────────────┘
 -3. Storage
 
 ## What is difference Docker and Virtual Machine?
