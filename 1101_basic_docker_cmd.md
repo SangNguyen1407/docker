@@ -6,13 +6,13 @@ The Docker client sends requests to the Docker daemon, a background process runn
 Communication happens over a REST API using sockets or networks.
 ![](pic/DockerArchitecture.png)
 
-## Docker Core Architectural Models
-- Docker Client: the client sends this command to the daemon via a REST API
+## The components of the Core Docker Architecture
+- Docker Client: the client sends this command to the Docker Daemon (onto the Docker Host) via a REST API
 - Docker Host: provides the environment for running the daemon, containers, and images.
-- Docker Registry: a remote repository used to store and distribute docker images
+- Docker Registry: a remote repository used to store and distribute docker images.
 
-## Detail Docker Core Architectural Models
-- Docker Client:
+## The components of the Core Docker Architecture
+- Docker Client (`docker`): Users interact with Docker by sending these commands to the Docker Daemon (in the Docker Host)
 Handles user interactions through via common commands:
     - `docker build` Builds an image from a Dockerfile
     - `docker pull` Pulls an image from a registry.
@@ -21,30 +21,35 @@ Handles user interactions through via common commands:
 The Docker Host is the physical or virtual machine that provides the complete environment for executing and running containers. 
 It comprises:
     - The Operating System (and its kernel).
-    - The Docker Daemon.
-    - Images that have been pulled or built.
-    - Running Containers.
-    - Networks and Storage components.
+    - The Docker Daemon(`dockerd`)
+        - Listen Dokcer API request from Docker Client, 
+    - Manages Docker object(includes images, containers, networks, and volumnes)
+    - Networks and Storage components. A daemon can commnunicate with other daemons to manage Docker service 
 - Docker Registry:
-A centralized repository for managing the image lifecycle via specific commands:
+A centralized repository for storing Docker images, with Docker Hub being the most popular one.
+Other cloud-based registers such as AWS ECR, Google Artifact Registry, and Azure Container Registry.
+Managing Images via Commands:
     - `docker pull <image_name>` Downloads an image from a configured registry to your local Docker Host.
     - `docker push <image_name>` Uploads a local image to a registry.
 
 ## Docker Objects
-- 1. Docker Images
-Images are built from a Dockerfile, a simple text file defining the steps to assemble the image.
+- Docker Images：
+Images are built from a Dockerfile, a simple text file defining the steps(calling instruction) in Dockerfile to assemble the image.
+When changing layers the Dockerfile, and rebuilding the image, only those layers, which have changed, are rebuilt.
 There are 2 printciples of images:
-    - 1. Images are a immutable(read-only), not modify or make changes to it. 
-    - 2. Images are composed of layers. Each layer represents a set of file system, that add remove or modify files.
+    - Images are a immutable(read-only), not modify or make changes to it. 
+    - Images are composed of layers. Each layer represents a set of file system, that add remove or modify files.
 ![](pic/ImageLayer.png)
 
 When creating Dockerfile with layers, and running `docker build` prompts in Docker Client to send this Dockerfile to Docker Daemon via REST API.
 Docker Daemon processes the Dockerfile, download the node:18-alpine base image from Docker Registry, executes the defined steps and save final result onto Docker Host.
 
-- 2. Containers
-A container is a runnable,live instance of an image
+- Docker Containers：
+    - A container is a runnable,live instance of an image, 
+    - Using the Docker API of CLI to create,start, stop, move, delete a container.
+    - Connect to one or more networks, attach storage, and create a new image
 
-- 3. Storage
+- Storage：
 
 ## What is difference Docker and Virtual Machine?
 
